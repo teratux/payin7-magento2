@@ -8,12 +8,12 @@ if($block->getPrice()) {
         <span><?= __('DESDE') ?></span>
         <span class="payinPrice"><?= round($block->getPrice(), 0) ?></span>
         <span><?= __('EN').' '.$installment['months'].' '.__('CUOTAS') ?></span>
-        <br/><span>(<?= __('%1 de gastos gestión incluidos en cada cuota',$block->formatPrice(round($installment['commission'], 0))) ?>)<a href="#myModal"><sup>1</sup></a></span>
+        <br/><span>(<?= __('%1 de gastos gestión incluidos en cada cuota',$block->formatPricePrecision(round($installment['commission'], 0), 0)) ?>)<a href="#myModal"><sup>1</sup></a></span>
         <?php
         if($block->showTinTae()) {
         ?>
         <br/>(<?= __("TIN") ?> <?= $installment['tin'] ?>%, <?= __("TAE") ?> <?= $installment['tae'] ?>% )
-        <br/><?= $block->getTextoImporteFinanciado().' '.$block->formatPrice($installment['months'] * $installment['amount']) ?>
+        <br/><?= $block->getTextoImporteFinanciado().' '.$block->formatPricePrecision($installment['months'] * $installment['amount'], 0) ?>
         <?php
         }
         ?>
