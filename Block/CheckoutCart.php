@@ -60,7 +60,7 @@ class CheckoutCart extends \Magento\Framework\View\Element\Template {
             }
         }
 
-        return ($price ? $this->priceHelper->currency($price, true, false) : false);
+        return ($price ? $this->priceHelper->currency(number_format($price, 0), true, false) : false);
     }
     
     protected function _toHtml() {
