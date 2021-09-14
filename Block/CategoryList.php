@@ -1,14 +1,15 @@
 <?php
 
 namespace Payin7\Mage2Payin7\Block;
+use Magento\Framework\Pricing\PriceCurrencyInterface;
 
 class CategoryList extends BaseBlock {
 
     public function __construct(\Magento\Framework\View\Element\Template\Context $context, 
-            \Magento\Framework\Pricing\Helper\Data $priceHelper, 
+            PriceCurrencyInterface $priceCurrency,   
             \Payin7\Mage2Payin7\Helper\Payin7 $payin7,
             array $data = array()) {
-        parent::__construct($context, $priceHelper,$payin7,$data);
+        parent::__construct($context, $priceCurrency, $payin7,$data);
     }
     
     /**
