@@ -2,16 +2,21 @@
 
 namespace Payin7\Mage2Payin7\Block;
 
-class Product extends \Magento\Framework\View\Element\Template {
-    protected $priceHelper, $payin7, $repository;
+use Magento\Framework\Pricing\PriceCurrencyInterface;
+class Product extends \Magento\Framework\View\Element\Template
+{
+    protected $payin7, $repository;
+
+    /** @var PriceCurrencyInterface $priceCurrency */
+    protected $priceCurrency;
     
     public function __construct(\Magento\Framework\View\Element\Template\Context $context, 
-            \Magento\Framework\Pricing\Helper\Data $priceHelper, 
+            PriceCurrencyInterface $priceCurrency, 
             \Payin7\Mage2Payin7\Helper\Payin7 $payin7,
             \Magento\Catalog\Model\ProductRepository $repository,
             array $data = array()) {
         parent::__construct($context, $data);
-        $this->priceHelper = $priceHelper;
+        $this->priceCurrency = $priceCurrency;
         $this->payin7 = $payin7;
         $this->repository = $repository;
     }
@@ -124,7 +129,7 @@ class Product extends \Magento\Framework\View\Element\Template {
      * @return string
      */
     public function formatPrice($price) {
-        return $this->priceHelper->currency(number_format($price, 0), true, false);
+        return $this->priceCurrency->convertAndFormat($price, true, 0);
     }
     
     /**

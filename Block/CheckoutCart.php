@@ -1,22 +1,23 @@
 <?php
 
 namespace Payin7\Mage2Payin7\Block;
+use Magento\Framework\Pricing\PriceCurrencyInterface;
 
 class CheckoutCart extends \Magento\Framework\View\Element\Template {
-    private $session, $payin7, $priceHelper, $cookieManager;
+    private $session, $payin7, $priceCurrency, $cookieManager;
     
     const COOKIE_NAME = 'payin7';
     
     public function __construct(\Magento\Framework\View\Element\Template\Context $context, 
             \Magento\Checkout\Model\Session $session, 
-            \Magento\Framework\Pricing\Helper\Data $priceHelper, 
+            PriceCurrencyInterface $priceCurrency,  
             \Payin7\Mage2Payin7\Helper\Payin7 $payin7,
             \Magento\Framework\Stdlib\CookieManagerInterface $cookieManager,
             array $data = array()) {
         parent::__construct($context, $data);
         $this->session = $session;
         $this->payin7 = $payin7;
-        $this->priceHelper = $priceHelper;
+        $this->priceCurrency = $priceCurrency;
         $this->cookieManager = $cookieManager;
     }
     
@@ -109,7 +110,7 @@ class CheckoutCart extends \Magento\Framework\View\Element\Template {
      * @return string
      */
     public function formatPrice($price) {
-        return $this->priceHelper->currency(number_format($price, 0), true, false);
+        return $this->priceCurrency->convertAndFormat($price, true, 0);
     }
     
     /**

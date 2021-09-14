@@ -1,16 +1,17 @@
 <?php
 
 namespace Payin7\Mage2Payin7\Block;
+use Magento\Framework\Pricing\PriceCurrencyInterface;
 
 class BaseBlock extends \Magento\Framework\View\Element\Template {
-    private $priceHelper, $payin7;
+    private $priceCurrency, $payin7;
     
     public function __construct(\Magento\Framework\View\Element\Template\Context $context, 
-            \Magento\Framework\Pricing\Helper\Data $priceHelper, 
+            PriceCurrencyInterface $priceCurrency,  
             \Payin7\Mage2Payin7\Helper\Payin7 $payin7,
             array $data = array()) {
         parent::__construct($context, $data);
-        $this->priceHelper = $priceHelper;
+        $this->priceCurrency = $priceCurrency;
         $this->payin7 = $payin7;
     }
     
@@ -104,7 +105,7 @@ class BaseBlock extends \Magento\Framework\View\Element\Template {
      * @return string
      */
     public function formatPrice($price) {
-        return $this->priceHelper->currency(number_format($price, 0), true, false);
+        return $this->priceCurrency->convertAndFormat($price, true, 0);
     }
     
     /**

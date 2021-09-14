@@ -75,16 +75,4 @@ class Payment extends \Payin7\Mage2Payin7\Block\Product {
     public function getTextoImporteFinanciado() {
         return $this->_scopeConfig->getValue('payment/mage2payin7/calculadora/textoImporteFinanciado');
     }
-
-    /**
-     * Devuelve el precio formateado.
-     * @param float $price
-     * @return string
-     */
-    public function formatPrice($price) {
-        var_dump($this->priceHelper->currency(number_format($price, 0), true, false));
-        var_dump(number_format($price, 0));
-        return $this->priceHelper->currency(number_format($price, 0), true, false);
-    }
-
 }
