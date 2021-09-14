@@ -72,10 +72,10 @@ define([
          * @param {String} tae
          */
         updateCalculator: function(price, month, tin, tae) {
-            $('.payin7_calculator.product_calculator .calc-amount').html(utils.formatPrice(Math.round(price)));
+            $('.payin7_calculator.product_calculator .calc-amount').html(utils.formatPrice(price, {requiredPrecision: "0"}));
             $('.payin7_calculator.product_calculator .installments-count').val(month);
             $('.payin7_calculator.product_calculator .calc-months').html(month);
-            $('.payin7_calculator.product_calculator .calc-financial').html(utils.formatPrice(Math.round(price) * month));
+            $('.payin7_calculator.product_calculator .calc-financial').html(utils.formatPrice(price * month, {requiredPrecision: "0"}));
             $('.payin7_calculator.product_calculator .calc-tin').html(tin);
             $('.payin7_calculator.product_calculator .calc-tae').html(tae);
         },
