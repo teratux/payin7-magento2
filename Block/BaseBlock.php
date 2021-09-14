@@ -26,7 +26,7 @@ class BaseBlock extends \Magento\Framework\View\Element\Template {
         if(!empty($commissions[0]['installments'])) {
             foreach($commissions[0]['installments'] as $installment) {
                 if($installment['months'] > $months) {
-                    $price = round($installment['amount'], 0);
+                    $price = $installment['amount'];
                     $months = $installment['months'];
                 }
             }

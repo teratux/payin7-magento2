@@ -22,11 +22,11 @@
         <span class="installments-sub"><?= $block->getTextoCuotas() ?></span>
     </div>
     <div class="calc-results">
-        <span class="calc-amount"><?= $block->formatPrice($defaultPayin7Data['amount']) ?></span>
+        <span class="calc-amount"><?= $block->formatPrice(round($defaultPayin7Data['amount'], 0)) ?></span>
         <span> <?= $block->getTextoImporteMes() ?></span>
         <span class="calc-months"><?= $defaultPayin7Data['months'] ?></span>
         <span class="calc-months-after"><?= __("CUOTAS") ?></span>
-        <br/><span>(<?= __('%1 de gastos gestión incluidos en cada cuota',$block->formatPrice($defaultPayin7Data['commission']) ) ?>)<a href="#myModal"><sup>1</sup></a></span>
+        <br/><span>(<?= __('%1 de gastos gestión incluidos en cada cuota',$block->formatPrice(round($defaultPayin7Data['commission'], 0)) ) ?>)<a href="#myModal"><sup>1</sup></a></span>
         <?php
         if($block->showTinTae()) {
         ?>
