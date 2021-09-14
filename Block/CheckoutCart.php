@@ -109,7 +109,7 @@ class CheckoutCart extends \Magento\Framework\View\Element\Template {
      * @return string
      */
     public function formatPrice($price) {
-        return $this->priceHelper->currency($price, true, false);
+        return $this->priceHelper->currency(number_format($price, 0), true, false);
     }
     
     /**
