@@ -41,8 +41,7 @@ class ColorPicker extends \Magento\Config\Block\System\Config\Form\Field {
                     $(this).ColorPickerSetColor(this.value);
                 });
             });
-        });
-        </script>';
+            </script>';
 
         return $html;
     }
