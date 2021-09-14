@@ -54,7 +54,7 @@ class CheckoutCart extends \Magento\Framework\View\Element\Template {
         if(!empty($commissions[0]['installments'])) {
             foreach($commissions[0]['installments'] as $installment) {
                 if($installment['months'] > $months) {
-                    $price = $installment['amount'];
+                    $price = round($installment['amount'], 0);
                     $months = $installment['months'];
                 }
             }
